@@ -2,12 +2,16 @@
 
 ## Overview
 
-This is Phase B of the Threat Detection Platform: a low-interaction SSH honeypot deployed on AWS to capture real-world attacker behavior — login attempts, credentials tried, and commands executed — in a fully isolated, contained environment. Unlike Phase A (which analyzed a static malware PCAP sample), this phase generates live, first-hand attack data.
+This is Phase B of the Threat Detection Platform: a low-interaction SSH honeypot deployed on AWS to capture real-world attacker behavior — login attempts, credentials tried, and commands executed — in a fully isolated, contained environment. Unlike Phase A (which analyzed a static malware PCAP sample) this phase generates live, first-hand attack data.
+
+
+  <img src = "https://github.com/niha-v/Honeypot-/blob/main/Image1.png" width ="500" >
+
 
 ## What It Does
 
 - Presents a fake SSH service on the real SSH port (22) that accepts any username/password combination, mimicking a poorly-secured Linux server.
-- Logs every login attempt, source IP, and every command an attacker runs inside the fake shell.
+- Logs every login attempt, source IP and every command an attacker runs inside the fake shell.
 - Ships those logs off the instance in near real-time to AWS CloudWatch Logs, so evidence survives even if the honeypot itself is fully compromised.
 - Runs entirely isolated from any other AWS resources on the account.
 
