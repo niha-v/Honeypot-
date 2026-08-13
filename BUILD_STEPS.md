@@ -10,7 +10,7 @@ This document walks through how the honeypot was built, step by step, from a bar
 - Created a public subnet (`10.99.1.0/24`) within it.
 - Created and attached an Internet Gateway to the VPC.
 - Configured the route table for the subnet with a `0.0.0.0/0` route pointing to the Internet Gateway, making the subnet publicly reachable.
-
+  
 **Why:** Keeping the honeypot in its own VPC with a distinct CIDR range means that even in a worst-case compromise, there's no network path back to any other AWS infrastructure.
 
 ---
@@ -26,11 +26,15 @@ Created a security group (`honeypot-sg`) with the following inbound rules:
 
 Outbound was later restricted to ports **443** and **80** only — enough for CloudWatch log shipping and system updates, nothing more.
 
+<img src = "https://github.com/niha-v/Honeypot-/blob/main/Inbound%20Rules.png" width ="500" >
+
 **Why:** The honeypot should only ever expose exactly what it's meant to expose. Management access is kept completely separate from the honeypot's attack surface.
 
 ---
 
 ## 3. Least-Privilege IAM Role
+
+<img src = "https://github.com/niha-v/Honeypot-/blob/main/IAM%20role.png" width ="500" >
 
 Created an IAM policy granting only:
 
@@ -47,9 +51,13 @@ Scoped to a single log group ARN (`/honeypot/cowrie`), and attached to a new rol
 
 ## 4. EC2 Instance Launch
 
+<img src = "https://github.com/niha-v/Honeypot-/blob/main/Ubuntu.png" width ="500" >
+
 - Launched an Ubuntu Server 24.04 LTS instance (`t3.micro`, free-tier eligible).
 - Deployed into the honeypot VPC/subnet with a public IP assigned.
 - Attached `honeypot-sg` and `honeypot-ec2-role`.
+
+<img src = "https://github.com/niha-v/Honeypot-/blob/main/Network%20Settings.png" width ="500" >
 
 ---
 
