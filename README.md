@@ -66,6 +66,5 @@ This honeypot was deliberately built with defense-in-depth in mind, since it's i
 
 *To be added once the honeypot has been running long enough to collect a meaningful sample of real attacker traffic. This section will cover: number of unique attacker IPs, most common credentials attempted, most common commands run post-login, and any notable attack patterns.*
 
-## What's Next
 
-Logs captured here will feed into later phases of the platform, including MITRE ATT&CK mapping of observed attacker commands and eventual machine learning-based anomaly detection across combined malware traffic (Phase A) and live honeypot data (this phase).
+
