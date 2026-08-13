@@ -1,5 +1,6 @@
 # AWS Cowrie Honeypot
 
+
 ## Overview
 
 This is Phase B of the Threat Detection Platform: a low-interaction SSH honeypot deployed on AWS to capture real-world attacker behavior — login attempts, credentials tried, and commands executed — in a fully isolated, contained environment. Unlike Phase A (which analyzed a static malware PCAP sample) this phase generates live, first-hand attack data.
